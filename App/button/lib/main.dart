@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
@@ -13,35 +13,84 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Text('Default'),  //  Default
-            //  フォントの太さ
-            Text('Bold', style: TextStyle(fontWeight: FontWeight.bold)), //  bold
-            //  フォントスタイル
-            Text('Italic', style: TextStyle(fontStyle: FontStyle.italic)), //  italic
-            //  フォントサイズ
-            Text('FontSize = 36', style: TextStyle(fontSize: 36)), //  fontSize
-            //  フォントカラー
-            Text('Red', style: TextStyle(color: Colors.red)), //  fontColor
             Container(
-              width: double.infinity,
-              color: Colors.grey,
-              //  テキストの位置指定
-              child: Text('TextAlign.right', textAlign: TextAlign.right),
+              padding: EdgeInsets.only(top: 32),
+              child: Text('TextButton'),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                TextButton(
+                    onPressed: null,
+                    child: Text('disabled'),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text('enable'),
+                ),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    primary: Colors.red
+                  ),
+                  onPressed: () {},
+                  child: Text('enable'),
+                ),
+              ],
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 32),
+              child: Text('OutlinedButton'),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                OutlinedButton(
+                  onPressed: null,
+                  child: Text('disabled'),
+                ),
+                // ignore: deprecated_member_use
+                OutlinedButton(
+                  onPressed: () {},
+                  child: Text('enable'),
+                ),
+                // ignore: deprecated_member_use
+                OutlinedButton(
+                  onLongPress: () {},
+                  style: OutlinedButton.styleFrom(
+                    primary: Colors.red,
+                  ),
+                  child: Text('enable'),
+                ),
+              ],
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 32),
+              child: Text('ElevatedButton'),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                ElevatedButton(
+                    onPressed: null,
+                    child: Text('disabled'),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('enabled'),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.red,
+                  ),
+                  child: Text('enabled'),
+                ),
+              ],
             ),
           ],
         ),
